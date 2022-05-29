@@ -1,0 +1,28 @@
+<h1>Cities</h1>
+<h2><a routerLink="./add">Thêm thành phố</a></h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Thành Phố</th>
+    <th scope="col">Dân Số</th>
+    <th scope="col">Diện Tích</th>
+    <th scope="col">Mô Tả</th>
+    <th scope="col">Quốc Gia</th>
+    <th colspan="2">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let city of cities, index as i ">
+    <th scope="row">{{i + 1}}</th>
+    <td>{{city.name}}</td>
+    <td>{{city.popular}}</td>
+    <td>{{city.area}}</td>
+    <td>{{city.description}}</td>
+    <td>{{city.province.name}}</td>
+    <td><a [routerLink]="['/city/update', city.id]" >Sửa</a></td>
+    <td><a [routerLink]="['/city/delete', city.id]" >Xóa</a></td>
+  </tr>
+  </tbody>
+</table>
+

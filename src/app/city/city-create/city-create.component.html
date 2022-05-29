@@ -1,0 +1,56 @@
+<h1>Điền Thông Tin Thành Phố</h1>
+<h2><a routerLink="/city">Home</a></h2>
+<div class="container">
+  <form [formGroup]="cityForm" (ngSubmit)="addCity()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Tên Thành Phố</label>
+      <input type="text" class="form-control" id="name" formControlName="name">
+      <div *ngIf="nameControl.touched && nameControl.invalid">
+        <p style="color: red" *ngIf="nameControl.errors?.required">
+          Vui lòng nhập tên thành phố.
+        </p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="popular" class="form-label">Dân số</label>
+      <input type="text" class="form-control" id="popular" formControlName="popular">
+      <div *ngIf="popularControl.touched && popularControl.invalid">
+        <p style="color: red" *ngIf="popularControl.errors?.required">
+          Vui lòng nhập dân số.
+        </p>
+        <p style="color: red" *ngIf="popularControl.errors?.pattern">
+          Vui lòng chỉ nhập số.
+        </p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="area" class="form-label">Diện Tích</label>
+      <input type="text" class="form-control" id="area" formControlName="area">
+      <div *ngIf="areaControl.touched && areaControl.invalid">
+        <p style="color: red" *ngIf="areaControl.errors?.required">
+          Vui lòng nhập diện tích.
+        </p>
+        <p style="color: red" *ngIf="areaControl.errors?.pattern">
+          Vui lòng chỉ nhập số.
+        </p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="province">Quốc Gia</label>
+      <select  formControlName="province" id="province">
+        <option [value]="province.id" *ngFor="let province of provinces">{{province.name}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Mô tả</label>
+      <input type="text" class="form-control" id="description" formControlName="description">
+      <div *ngIf="descriptionControl.touched && descriptionControl.invalid">
+        <p style="color: red" *ngIf="descriptionControl.errors?.required">
+          Vui lòng nhập mô tả thành phố.
+        </p>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm</button>
+  </form>
+</div>
+

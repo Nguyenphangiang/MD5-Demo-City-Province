@@ -1,0 +1,4 @@
+<label for="province">Quốc Gia</label>
+<select  formControlName="province" id="province">
+  <option ngValue="{{province.id}}" *ngFor="let province of provinces">{{province.name}}</option>
+</select>
