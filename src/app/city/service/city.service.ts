@@ -20,7 +20,7 @@ export class CityService {
     return this.http.get<City>(`${API_URL}/cities/${id}`);
   }
   updateCity(id, city): Observable<City> {
-    return this.http.put<City>(`${API_URL}/cities/${id}`, city);
+    return this.http.post<City>(`${API_URL}/cities/${id}`, city);
   }
   deleteCity(id): Observable<City> {
     return this.http.delete<City>(`${API_URL}/cities/${id}`);

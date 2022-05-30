@@ -38,6 +38,9 @@ export class CityEditComponent implements OnInit {
   ngOnInit() {
     this.getAllProvince();
   }
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0] as File;
+  }
   getCityById(id: number) {
     return this.cityService.getCityById(id).subscribe((city) => {
       this.image = city.image;
@@ -46,7 +49,7 @@ export class CityEditComponent implements OnInit {
         name: new FormControl(city.name),
         popular: new FormControl(city.popular),
         area: new FormControl(city.area),
-        image: new FormControl( city.image),
+        image: new FormControl(),
         description: new FormControl(city.description),
         province: new FormControl(city.province.id)
       });
@@ -57,10 +60,14 @@ export class CityEditComponent implements OnInit {
     if (this.cityForm.invalid) {
       return;
     } else {
-      const city = this.cityForm.value;
-      city.province = {
-        id: city.province
-      };
+      const city: FormData = new FormData();
+      city.append('id', this.cityForm.get('id').value);
+      city.append('name', this.cityForm.get('name').value);
+      city.append('popular', this.cityForm.get('popular').value);
+      city.append('area', this.cityForm.get('area').value);
+      city.append('image', this.selectedFile);
+      city.append('description', this.cityForm.get('description').value);
+      city.append('province', this.cityForm.get('province').value);
       this.cityService.updateCity(id, city).subscribe(() => {
         Swal.fire('Cập Nhập Thành Công !!!');
         this.router.navigate(['/city']);
