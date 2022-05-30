@@ -37,6 +37,12 @@
       </div>
     </div>
     <div class="mb-3">
+      <label for="image">Ảnh</label>
+      <br>
+      <img src="http://localhost:8080/image/{{image}}" width="100" alt="" >
+      <input type="file" id="image" (change)="onFileSelected($event)">
+    </div>
+    <div class="mb-3">
       <label for="province">Quốc Gia</label>
       <select  formControlName="province" id="province">
         <option [value]="province.id" *ngFor="let province of provinces">{{province.name}}</option>

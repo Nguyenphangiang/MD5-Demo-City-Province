@@ -7,6 +7,7 @@
     <th scope="col">Thành Phố</th>
     <th scope="col">Dân Số</th>
     <th scope="col">Diện Tích</th>
+    <th scope="col">Ảnh</th>
     <th scope="col">Mô Tả</th>
     <th scope="col">Quốc Gia</th>
     <th colspan="2">Action</th>
@@ -18,6 +19,7 @@
     <td>{{city.name}}</td>
     <td>{{city.popular}}</td>
     <td>{{city.area}}</td>
+    <td><img src="http://localhost:8080/image/{{city.image}}" width="100" alt=""></td>
     <td>{{city.description}}</td>
     <td>{{city.province.name}}</td>
     <td><a [routerLink]="['/city/update', city.id]" >Sửa</a></td>

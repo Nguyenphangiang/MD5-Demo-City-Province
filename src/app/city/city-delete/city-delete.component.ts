@@ -32,11 +32,11 @@ export class CityDeleteComponent implements OnInit {
 
     swalWithBootstrapButtons.fire({
       title: 'Are you sure?',
-      text: 'You won\'t be able to revert this!',
+      text: 'Xóa rồi là phải tạo lại đấy',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
+      confirmButtonText: 'Xóa luôn!',
+      cancelButtonText: 'Từ từ, cancel!',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
@@ -45,7 +45,7 @@ export class CityDeleteComponent implements OnInit {
         });
         swalWithBootstrapButtons.fire(
           'Deleted!',
-          'Your file has been deleted.',
+          'Xóa thành công !!!.',
           'success'
         );
       } else if (

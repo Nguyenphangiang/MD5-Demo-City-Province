@@ -3,6 +3,7 @@ export interface City {
   name?: string;
   popular?: number;
   area?: number;
+  image?: any;
   description?: string;
   province?: any;
 }

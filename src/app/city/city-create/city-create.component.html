@@ -36,10 +36,17 @@
       </div>
     </div>
     <div class="mb-3">
+      <label for="image">Ảnh</label>
+      <input type="file" id="image" (change)="onFileSelected($event)">
+    </div>
+    <div class="mb-3">
       <label for="province">Quốc Gia</label>
-      <select  formControlName="province" id="province">
-        <option [value]="province.id" *ngFor="let province of provinces">{{province.name}}</option>
-      </select>
+      <select  id="province" formControlName="province">
+        <option [value]="null" disabled>Chọn thành phố</option>
+        <ng-container *ngFor="let p of provinces">
+          <option  [value]="p.id">{{p.name}}</option>
+        </ng-container>
+        </select>
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Mô tả</label>
