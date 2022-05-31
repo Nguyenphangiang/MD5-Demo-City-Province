@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./city-edit.component.css']
 })
 export class CityEditComponent implements OnInit {
-  selectedFile = null;
+  selectedFile = new File(['none'], 'filename.jpg');
   cityForm: FormGroup = new FormGroup({
     id: new FormControl(),
     name: new FormControl(),
@@ -40,6 +40,7 @@ export class CityEditComponent implements OnInit {
   }
   onFileSelected(event) {
     this.selectedFile = event.target.files[0] as File;
+    console.log(this.selectedFile);
   }
   getCityById(id: number) {
     return this.cityService.getCityById(id).subscribe((city) => {

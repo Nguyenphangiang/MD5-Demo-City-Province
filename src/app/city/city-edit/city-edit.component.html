@@ -40,7 +40,7 @@
       <label for="image">Ảnh</label>
       <br>
       <img src="http://localhost:8080/image/{{image}}" width="100" alt="" >
-      <input type="file" id="image" (change)="onFileSelected($event)">
+      <input type="file" id="image" (change)="onFileSelected($event)" formControlName="image">
     </div>
     <div class="mb-3">
       <label for="province">Quốc Gia</label>

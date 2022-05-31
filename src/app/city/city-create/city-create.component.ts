@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {ProvinceService} from '../../province/service/province.service';
 import {Province} from '../../province/model/province';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-city-create',
@@ -25,7 +26,8 @@ export class CityCreateComponent implements OnInit {
     province: new FormControl()
   });
   constructor(private cityService: CityService,
-              private provinceService: ProvinceService) { }
+              private provinceService: ProvinceService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getAllProvince();
@@ -48,6 +50,7 @@ export class CityCreateComponent implements OnInit {
       const city = cityData;
       this.cityService.addCity(city).subscribe(() => {
         Swal.fire('Thêm Thành Công !!!');
+        this.router.navigate(['/city']);
       });
       this.cityForm.reset();
     }
