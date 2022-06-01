@@ -1,63 +1,115 @@
-<h1>Điền Thông Tin Thành Phố</h1>
-<h2><a routerLink="/city">Home</a></h2>
-<div class="container">
-  <form [formGroup]="cityForm" (ngSubmit)="addCity()">
-    <div class="mb-3">
-      <label for="name" class="form-label">Tên Thành Phố</label>
-      <input type="text" class="form-control" id="name" formControlName="name">
-      <div *ngIf="nameControl.touched && nameControl.invalid">
-        <p style="color: red" *ngIf="nameControl.errors?.required">
-          Vui lòng nhập tên thành phố.
-        </p>
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="popular" class="form-label">Dân số</label>
-      <input type="text" class="form-control" id="popular" formControlName="popular">
-      <div *ngIf="popularControl.touched && popularControl.invalid">
-        <p style="color: red" *ngIf="popularControl.errors?.required">
-          Vui lòng nhập dân số.
-        </p>
-        <p style="color: red" *ngIf="popularControl.errors?.pattern">
-          Vui lòng chỉ nhập số.
-        </p>
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="area" class="form-label">Diện Tích</label>
-      <input type="text" class="form-control" id="area" formControlName="area">
-      <div *ngIf="areaControl.touched && areaControl.invalid">
-        <p style="color: red" *ngIf="areaControl.errors?.required">
-          Vui lòng nhập diện tích.
-        </p>
-        <p style="color: red" *ngIf="areaControl.errors?.pattern">
-          Vui lòng chỉ nhập số.
-        </p>
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="image">Ảnh</label>
-      <input type="file" id="image" (change)="onFileSelected($event)">
-    </div>
-    <div class="mb-3">
-      <label for="province">Quốc Gia</label>
-      <select  id="province" formControlName="province">
-        <option [value]="null" disabled>Chọn thành phố</option>
-        <ng-container *ngFor="let p of provinces">
-          <option  [value]="p.id">{{p.name}}</option>
-        </ng-container>
-        </select>
-    </div>
-    <div class="mb-3">
-      <label for="description" class="form-label">Mô tả</label>
-      <input type="text" class="form-control" id="description" formControlName="description">
-      <div *ngIf="descriptionControl.touched && descriptionControl.invalid">
-        <p style="color: red" *ngIf="descriptionControl.errors?.required">
-          Vui lòng nhập mô tả thành phố.
-        </p>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Thêm</button>
-  </form>
-</div>
 
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Add new city</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a routerLink="/city">Home</a></li>
+          <li class="breadcrumb-item active">Add City</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">City Information</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form [formGroup]="cityForm" (ngSubmit)="addCity()">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="name">City Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter city name" formControlName="name">
+                <div *ngIf="nameControl.touched && nameControl.invalid">
+                  <p style="color: red" *ngIf="nameControl.errors?.required">
+                    City name required
+                  </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="popular">City Popular</label>
+                <input type="text" class="form-control" id="popular" placeholder="Enter popular" formControlName="popular">
+                <div *ngIf="popularControl.touched && popularControl.invalid">
+                  <p style="color: red" *ngIf="popularControl.errors?.required">
+                    City popular required
+                  </p>
+                  <p style="color: red" *ngIf="popularControl.errors?.pattern">
+                    Please enter only number
+                  </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="area">City Area</label>
+                <input type="text" class="form-control" id="area" formControlName="area" placeholder="Enter city area">
+                <div *ngIf="areaControl.touched && areaControl.invalid">
+                  <p style="color: red" *ngIf="areaControl.errors?.required">
+                    City area required
+                  </p>
+                  <p style="color: red" *ngIf="areaControl.errors?.pattern">
+                    Please enter only number
+                  </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="image">Image</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file"  id="image" (change)="onFileSelected($event)">
+                    <label class="custom-file-label" for="image">Choose file</label>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span class="fa fa-arrow-circle-right"></span>
+                <img id="output" width="100">
+              </div>
+              <div class="form-group">
+                  <label for="province">Provinces </label>
+                  <select  id="province" formControlName="province" class="form-control">
+                    <option [value]="null" disabled>Choose province</option>
+                    <ng-container *ngFor="let p of provinces">
+                      <option  [value]="p.id">{{p.name}}</option>
+                    </ng-container>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" rows="3" placeholder="Enter ..." id="description" formControlName="description"></textarea>
+                <div *ngIf="descriptionControl.touched && descriptionControl.invalid">
+                  <p style="color: red" *ngIf="descriptionControl.errors?.required">
+                    Please write something...
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+
+      </div>
+      <!--/.col (left) -->
+      <!-- right column -->
+
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>

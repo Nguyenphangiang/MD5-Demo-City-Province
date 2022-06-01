@@ -1,30 +1,74 @@
-<h1>Cities</h1>
-<h2><a routerLink="./add">Thêm thành phố</a></h2>
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Thành Phố</th>
-    <th scope="col">Dân Số</th>
-    <th scope="col">Diện Tích</th>
-    <th scope="col">Ảnh</th>
-    <th scope="col">Mô Tả</th>
-    <th scope="col">Quốc Gia</th>
-    <th colspan="2">Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let city of cities, index as i ">
-    <th scope="row">{{i + 1}}</th>
-    <td>{{city.name}}</td>
-    <td>{{city.popular}}</td>
-    <td>{{city.area}}</td>
-    <td><img src="http://localhost:8080/image/{{city.image}}" width="100" alt=""></td>
-    <td>{{city.description}}</td>
-    <td>{{city.province.name}}</td>
-    <td><a [routerLink]="['/city/update', city.id]" >Sửa</a></td>
-    <td><a [routerLink]="['/city/delete', city.id]" >Xóa</a></td>
-  </tr>
-  </tbody>
-</table>
 
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>City Management</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+          <li class="breadcrumb-item active">City Management</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <a routerLink="/city/add" class="btn btn-primary">
+                <span class="fa fa-plus"></span> Add City
+              </a>
+            </h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="cities" class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>City</th>
+                <th>Popular</th>
+                <th>Area</th>
+                <th>Image</th>
+                <th>Province</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let city of cities, index as i ">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{city.name}}</td>
+                <td>{{city.popular}}</td>
+                <td>{{city.area}}</td>
+                <td><img src="http://localhost:8080/image/{{city.image}}" width="100" alt=""></td>
+                <td>{{city.description}}</td>
+                <td>{{city.province.name}}</td>
+                <td><a [routerLink]="['/city/update', city.id]" class="btn btn-outline-warning">
+                  <span class="fa fa-edit"></span>
+                </a></td>
+                <td><a [routerLink]="['/city/delete', city.id]" class="btn btn-outline-danger">
+                  <span class="fa fa-trash"></span>
+                </a></td>
+              </tr>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>

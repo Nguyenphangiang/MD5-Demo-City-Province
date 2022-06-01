@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 })
 export class CityCreateComponent implements OnInit {
   selectedFile = null;
+  image = null;
   city: City = {};
   provinces: Province[] = [];
   cityForm: FormGroup = new FormGroup({
@@ -34,6 +35,8 @@ export class CityCreateComponent implements OnInit {
   }
   onFileSelected(event) {
     this.selectedFile = event.target.files[0] as File;
+    this.image = document.getElementById('output');
+    this.image.src = URL.createObjectURL(event.target.files[0]);
   }
   addCity() {
     const cityData: FormData = new FormData();

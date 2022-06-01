@@ -12,10 +12,14 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {ShareModule} from './nav-bar/module/share/share.module';
 import { CityEditComponent } from './city/city-edit/city-edit.component';
 import { CityDeleteComponent } from './city/city-delete/city-delete.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SideBarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

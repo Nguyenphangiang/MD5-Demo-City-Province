@@ -3,6 +3,7 @@ import {CityService} from '../service/city.service';
 import {Router} from '@angular/router';
 import {City} from '../model/city';
 
+declare var $: any;
 @Component({
   selector: 'app-city-list',
   templateUrl: './city-list.component.html',
@@ -19,6 +20,18 @@ export class CityListComponent implements OnInit {
   showAllCity() {
     this.cityService.getAll().subscribe((data) => {
       this.cities = data;
+      $(function() {
+        $('#cities').DataTable({
+          'paging': true,
+          'lengthChange': false,
+          'searching': true,
+          'ordering': true,
+          'info': true,
+          'pageLength' : 5,
+          'autoWidth': false,
+          'responsive': true,
+        });
+      });
     }, (error => {
       alert(error);
     }));

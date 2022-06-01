@@ -40,7 +40,8 @@ export class CityEditComponent implements OnInit {
   }
   onFileSelected(event) {
     this.selectedFile = event.target.files[0] as File;
-    console.log(this.selectedFile);
+    this.image = document.getElementById('output');
+    this.image.src = URL.createObjectURL(event.target.files[0]);
   }
   getCityById(id: number) {
     return this.cityService.getCityById(id).subscribe((city) => {
