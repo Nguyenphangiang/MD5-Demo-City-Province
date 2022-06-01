@@ -70,6 +70,9 @@ export class CityCreateComponent implements OnInit {
   get descriptionControl() {
     return this.cityForm.get('description');
   }
+  get provinceControl() {
+    return this.cityForm.get('province');
+  }
   getAllProvince() {
     this.provinceService.getAllProvince().subscribe((provinces) => {
       this.provinces = provinces;

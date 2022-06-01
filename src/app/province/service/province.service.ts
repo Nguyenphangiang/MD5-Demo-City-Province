@@ -12,5 +12,8 @@ export class ProvinceService {
   getAllProvince(): Observable<Province[]> {
    return this.http.get<Province[]>(`${API_URL}/cities/province`);
   }
+  addNewProvince(province): Observable<Province> {
+    return this.http.post<Province>(`${API_URL}/cities/province/add`, province);
+  }
 }
 
